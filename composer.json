@@ -1,0 +1,13 @@
+{
+    "name": "wkreator/php-reddit-api",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "waffelheld",
+            "email": "simon@zabienski.com"
+        }
+    ]
+}

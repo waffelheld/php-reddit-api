@@ -1,9 +1,49 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace \Waffelheld\Reddit;
+use GuzzleHttp;
 
-echo "hello 2"; 
+class reddit {
+    
+    private $baseUrl = "https://www.reddit.com/api/v1/";
+    private $key;
+    private $secret;
+    private $oauth_token;
+    
+    
+    public function __construct($token = "") {
+        if(!empty($token)) {
+            $this->oauth_token = $token;
+        } else {
+            //throw new RedditNoTokenException();
+        }
+    }
+    
+    public function get($endpoint, $params = array()) {
+    
+        
+    }
+    
+    public function getAuth($endpoint, $params = array()) {
+    
+        
+    }
+    
+    public function post($endpoint, $params = array()) {
+    
+        
+    }
+    
+    public function postAuth($endpoint, $params = array()) {
+    
+        
+    }
+    
+    
+    private function doRequest($endpoint, $params = array(), $isPost = false, $isAuth = false) {
+        
+    }
+    
+    
+    
+}
