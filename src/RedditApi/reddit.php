@@ -1,9 +1,9 @@
 <?php
 
-namespace \Waffelheld\Reddit;
+namespace RedditApi;
 use GuzzleHttp;
 
-class reddit {
+class Reddit {
     
     private $baseUrl = "https://www.reddit.com/api/v1/";
     private $key;
