@@ -3,9 +3,10 @@
 namespace RedditApi;
 use GuzzleHttp;
 
-class Reddit {
+class Reddit { 
     
-    private $baseUrl = "https://www.reddit.com/api/v1/";
+    private $baseUrl = "https://www.reddit.com/"; 
+    private $oauthUrl = "https://oauth.reddit.com/";
     private $clientId;
     private $secret;
     private $oauth_token;
@@ -29,17 +30,40 @@ class Reddit {
     }
     
     public function auth($params) {
-        $endpoint = "access_token";
+        $endpoint = "api/v1/access_token";
         $creds = array('user' => $this->clientId, 'password' => $this->secret);
         $header = array('Authorization' => 'Basic '. base64_encode(implode(':',$creds)));
         
         return $this->doRequest($endpoint, $params, 'post', false, $header);
     }
     
+    public function refresh($token) {
+        
+        $endpoint = "api/v1/access_token";
+        $creds = array('user' => $this->clientId, 'password' => $this->secret);
+        $header = array('Authorization' => 'Basic '. base64_encode(implode(':',$creds)));
+        
+        return $this->doRequest(
+                $endpoint, 
+                array(
+                    'grant_type' => 'refresh_token',
+                    'refresh_token' => $token
+                ), 
+                'post', 
+                false, 
+                $header);
+    }
+    
+    
     public function get($endpoint, $params = array()) {
-        
-       
-        
+    
+        return $this->doRequest($endpoint, $params, 'get');
+    
+    }
+    public function getAuth($endpoint, $params = array()) {
+    
+        return $this->doRequest($endpoint, $params, 'get',true);
+    
     }
     
     public function post($endpoint, $params = array()) {
@@ -49,7 +73,9 @@ class Reddit {
     }
     
     public function postAuth($endpoint, $params = array()) {
-    
+        $uri = $endpoint;
+        
+        $this->doRequest($uri, $params, 'post',true);
         
     }
     
@@ -63,12 +89,25 @@ class Reddit {
         
         $header['User-Agent'] = 'phcsaucebot/0.1';
         
+        if($isAuth === true) {
+            $header['Authorization'] = "Bearer ".$this->oauth_token;
+            $url = $this->oauthUrl.$uri;
+        }
+        
         $params['headers'] = $header;
         $params['debug'] = false;
-        
+        print_r($params);
+        if($uri == 'api/comment') {
+            $params['debug'] = true;
+            
+        }
         $response = $client->request(strtoupper($method),$url, $params);
-
-        return json_decode($response->getBody()->getContents());
+        if($uri == 'api/comment') {
+            print_r($response->getBody());
+            print_r($response->getBody()->getContents());
+            
+        }
+        return json_decode($response->getBody()->getContents(),true);
     }
     
     
