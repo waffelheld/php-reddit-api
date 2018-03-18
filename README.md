@@ -1,6 +1,6 @@
 # phpredditapi
 
-simple wrapper for the reddit api. currently unstable.
+very simple wrapper for the reddit api. currently unstable.
 
 ## install
 
