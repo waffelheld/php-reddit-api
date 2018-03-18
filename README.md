@@ -80,3 +80,8 @@ $result = $reddit->getAuth('api/me', $params);
 ```
 
 for a list of endpoints see [reddit api auto doku](https://www.reddit.com/dev/api/)
+
+
+## TODO
+
+- error handling
