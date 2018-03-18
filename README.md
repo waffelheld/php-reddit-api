@@ -1,8 +1,8 @@
-#phpredditapi
+# phpredditapi
 
-simple wrapper for the reddit api. unstable.
+simple wrapper for the reddit api. currently unstable.
 
-##install
+## install
 
 ```
 composer require waffelheld\phpredditapi:dev-master
@@ -11,7 +11,7 @@ composer require waffelheld\phpredditapi:dev-master
 package require guzzle >= 6.*
 
 
-##usage
+## usage
 
 basic example for receiving a OAuth2 token:
 
@@ -63,13 +63,13 @@ if(!isset($_GET['code']) && !isset($_GET['state'])) {
 ```
 
 
-###OAuth get endpoint
+### OAuth get endpoint
 
 ```php
 $reddit = new \RedditApi\Reddit('YOUR_TOKEN');
 $result = $reddit->getAuth('api/me');
 ```
-###OAuth post endpoint
+### OAuth post endpoint
 
 ```php
 $reddit = new \RedditApi\Reddit('YOUR_TOKEN');
@@ -79,4 +79,4 @@ $params = array(
 $result = $reddit->getAuth('api/me', $params);
 ```
 
-for a list of endpoints see [reddit api auto doku] (https://www.reddit.com/dev/api/)
+for a list of endpoints see [reddit api auto doku](https://www.reddit.com/dev/api/)
