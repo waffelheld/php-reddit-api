@@ -96,17 +96,17 @@ class Reddit {
         
         $params['headers'] = $header;
         $params['debug'] = false;
-        print_r($params);
-        if($uri == 'api/comment') {
-            $params['debug'] = true;
-            
-        }
+//        print_r($params);
+//        if($uri == 'api/comment') {
+//            $params['debug'] = true;
+//            
+//        }
         $response = $client->request(strtoupper($method),$url, $params);
-        if($uri == 'api/comment') {
-            print_r($response->getBody());
-            print_r($response->getBody()->getContents());
-            
-        }
+//        if($uri == 'api/comment') {
+//            print_r($response->getBody());
+//            print_r($response->getBody()->getContents());
+//            
+//        }
         return json_decode($response->getBody()->getContents(),true);
     }
     
