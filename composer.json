@@ -15,7 +15,7 @@
     "minimum-stability": "dev", 
     "autoload": {
         "psr-4": {
-            "RedditApi\\": "src/"
+            "Waffelheld\\": "src/"
         }
     }
 }
