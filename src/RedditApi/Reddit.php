@@ -1,6 +1,6 @@
 <?php
 
-namespace RedditApi;
+namespace Waffelheld;
 use GuzzleHttp;
 
 class Reddit { 

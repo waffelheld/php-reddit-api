@@ -1,6 +1,6 @@
 <?php
 
-namespace \Waffelheld\RedditException;
+namespace Waffelheld;
 
 
 class RedditException extends Exception
